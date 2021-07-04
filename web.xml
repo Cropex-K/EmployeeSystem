@@ -1,0 +1,9 @@
+<!-- Custom 403 Error Page -->
+<!--
+            NOTE: Security will throw this error when a user has been authenticated successfully
+            but lacks the permissions to perform the requested action.
+    -->
+<error-page>
+    <error-code>403</error-code>
+    <location>/error.html</location>
+</error-page>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="ISO-8859-1">
+    <title>Home page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</head>
+
+<div class="sidebar-nav">
+    <div class="well" style="width:600px; padding: 15px 0; text-align: center; ">
+        <ul class="nav nav-list">
+
+            <li class="nav-header" >Main</li>
+            <li><a href="/emp"><i class="nav-tabs"></i> List of employee</a></li>
+            <li><a href="/dep"><i class="glyphicon-align-center"></i> List of department</a></li>
+            <li><a href="/task"><i class="glyphicon-align-center"></i>List of task</a></li>
+            <li><a href="/logout"><i class="glyphicon-align-center"></i> logout</a></li>
+            <li><a href="/admin"><i class="user"></i>admin</a></li>
+
+
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Task List</title>
+    <link href="css/table.css" rel="stylesheet">
+</head>
+<body>
+<!--<h1>Person List</h1>-->
+<!--<a href="addPerson">Add Person</a>-->
+<!--<br/><br/>-->
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>description</th>
+        <th>theme</th>
+        <th>completing</th>
+        <th>name Dep From</th>
+        <th>name Dep to</th>
+    </tr>
+    <th:block th:each ="person : ${allTasks}">
+        <tr>
+            <td th:text="${person.id}">...</td>
+            <td th:text="${person.description}">...</td>
+            <td th:text="${person.theme}">...</td>
+            <td th:text="${person.completing}">...</td>
+            <td th:text="${person.nameDepFrom}">...</td>
+            <td th:text="${person.department.name}">...</td>
+            <td>
+                <form action="/doneTask" method="post">
+                    <input type="hidden" name="id" th:value="${person.id}"/>
+                    <input type="hidden" name="action" value="done"/>
+                    <button type="submit">Done</button>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<form action="/addTask/" method="post" th:object="${task}">
+    <h3>Insert the data below to create a new task</h3>
+    <input name="description" type="text" placeholder="description"><br>
+    <br>
+    <input name="theme" type="text" placeholder="theme"><br>
+    <br>
+    <input name="nameDepFrom" type="text" placeholder="name Dep From"><br>
+    <br>
+    <input name="departmentId" type="text" placeholder="ID Dep to"><br>
+    <br>
+    <input type="submit" value="Create task">
+</form>
+
+<h4><a href="/home">Back</a></h4>
+</body>
+</html>
+
+
+

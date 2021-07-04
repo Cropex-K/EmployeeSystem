@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Department List</title>
+    <link href="css/table.css" rel="stylesheet">
+</head>
+<body>
+<!--<h1>Person List</h1>-->
+<!--<a href="addPerson">Add Person</a>-->
+<!--<br/><br/>-->
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Hierarchy</th>
+    </tr>
+    <th:block th:each ="person : ${allDep}">
+        <tr>
+            <td th:text="${person.id}">...</td>
+            <td th:text="${person.name}">...</td>
+            <td th:text="${person.hierarchy}">...</td>
+
+        </tr>
+    </th:block>
+</table>
+
+<h4><a href="/home">Back</a></h4>
+</body>
+</html>

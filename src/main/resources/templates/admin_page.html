@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin page</title>
+    <link href="css/table.css" rel="stylesheet">
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Job post</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Department name</th>
+        <th>Password</th>
+        <th>Role</th>
+    </tr>
+    <th:block th:each ="person : ${allEmp}">
+        <tr>
+            <td th:text="${person.firstName}">...</td>
+            <td th:text="${person.secondName}">...</td>
+            <td th:text="${person.jobPost}">...</td>
+            <td th:text="${person.phone}">...</td>
+            <td th:text="${person.email}">...</td>
+            <td th:text="${person.department.getName()}">...</td>
+            <td th:text="${person.password}">...</td>
+            <td th:text="${person.getAuthorities()}">...</td>
+            <td>
+                <form action="/admin/deleteEmp" method="post">
+                    <input type="hidden" name="id" th:value="${person.id}"/>
+                    <input type="hidden" name="action" value="delete"/>
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<form action="/admin/addEmp/" method="post" th:object="${employee}">
+    <h3>Insert the data below to add a new employee</h3>
+    <input name="firstName" type="text" placeholder="first Name"><br>
+    <br>
+    <input name="secondName" type="text" placeholder="second Name"><br>
+    <br>
+    <input name="jobPost" type="text" placeholder="job Post"><br>
+    <br>
+    <input name="phone" type="text" placeholder="phone"><br>
+    <br>
+    <input name="email" type="text" placeholder="email"><br>
+    <br>
+    <input name="departmentId" type="text" placeholder="department ID"><br>
+    <br>
+    <input type="submit" value="Add new employee"><br>
+</form>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Hierarchy</th>
+    </tr>
+    <th:block th:each ="person : ${allDep}">
+        <tr>
+            <td th:text="${person.id}">...</td>
+            <td th:text="${person.name}">...</td>
+            <td th:text="${person.hierarchy}">...</td>
+            <td>
+                <form action="/admin/deleteDep" method="post">
+                    <input type="hidden" name="id" th:value="${person.id}"/>
+                    <input type="hidden" name="action" value="delete"/>
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+</table>
+<form action="/admin/addDep" method="post" th:object="${department}">
+    <h3>Insert the data below (name, hierarchy) to create a new department</h3>
+    <input name="name" type="text" placeholder="Name department"><br>
+    <br>
+    <input name="hierarchy" type="text" placeholder="hierarchy"><br>
+    <br>
+    <input type="submit" value="Create department">
+</form>
+
+<h4><a href="/home">Back</a></h4>
+
+</body>
+</html>
